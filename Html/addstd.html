@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="C:\Users\Appu Yadav\Desktop\Backend\CSS\addstd.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="nav border">Attendance Management Portal</div>
+      </div>
+      <div class="pannel">
+        <div class="pannel-ops">
+          <a class="border" href="index.html">Home</a>
+          <a class="border" href="logintecher.html" target="_blank"
+            >Teacher Pannel</a
+          >
+          <a class="border" href="loginstd.html" target="_blank"
+            >Student Pannel</a
+          >
+          <a class="border" href="loginadmin.html" target="_blank"
+            >Admin Pannel</a
+          >
+          <a class="border" href="">Contact Us</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>Add Student</h1>
+
+      <div class="content">
+        <div class="form-box">
+          <form action="">
+            <div class="form-group">
+              <label>Student ID</label><input type="text" required />
+            </div>
+            <div class="form-group">
+              <label>Roll No</label><input type="text" required />
+            </div>
+            <div class="form-group">
+              <label>Name</label><input type="text" required />
+            </div>
+            <div class="form-group">
+              <label>Father's Name</label><input type="text" />
+            </div>
+            <div class="form-group">
+              <label>DOB</label><input type="date" />
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <select required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Course</label>
+              <select required>
+                <option value="">Select</option>
+                <option>B.Tech</option>
+                <option>BCA</option>
+                <option>Diploma</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Branch</label>
+              <select required>
+                <option value="">Select</option>
+                <option>CS</option>
+                <option>IT</option>
+                <option>ECE</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Year</label>
+              <select required>
+                <option value="">Select</option>
+                <option>1st</option>
+                <option>2nd</option>
+                <option>3rd</option>
+                <option>4th</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Semester</label>
+              <select required>
+                <option value="">Select</option>
+                <option>Sem 1</option>
+                <option>Sem 2</option>
+                <option>Sem 3</option>
+                <option>Sem 4</option>
+                <option>Sem 5</option>
+                <option>Sem 6</option>
+                <option>Sem 7</option>
+                <option>Sem 8</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="phone ">Mobile No</label
+              ><input
+                type="tel"
+                id="phone"
+                name="phone"
+                pattern="[0-9]{10}"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label><input type="email" required />
+            </div>
+            <div class="form-group"><label>Address</label><input /></div>
+            <div class="form-group">
+              <label>Password</label><input type="password" required />
+            </div>
+            <button class="btn add">Add</button>
+          </form>
+        </div>
+
+        <div class="table-box">
+          <table>
+            <tr>
+              <th><input type="checkbox" id="selectAll" /></th>
+              <th>StudentID</th>
+              <th>RollNo</th>
+              <th>Name</th>
+              <th>FatherName</th>
+              <th>DOB</th>
+              <th>Gender</th>
+              <th>Course</th>
+              <th>Branch</th>
+              <th>Year</th>
+              <th>Semester</th>
+              <th>Mobile</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Password</th>
+              <th>Action</th>
+            </tr>
+
+            <tr>
+              <td><input type="checkbox" class="rowSelect" /></td>
+              <td>1511824021</td>
+              <td>2024-CSE-21</td>
+              <td>Amarjit Kumar</td>
+              <td>Vijay Yadav</td>
+              <td>10-Feb-2006</td>
+              <td>Male</td>
+              <td>Diploma</td>
+              <td>CS</td>
+              <td>2nd</td>
+              <td>Sem 4</td>
+              <td>8809738977</td>
+              <td>abc@gmail.com</td>
+              <td>Bela, Aurangabad (Bihar)</td>
+              <td>12345</td>
+              <td><button class="editBtn">Edit</button></td>
+            </tr>
+          </table>
+
+          <div class="search-box">
+            <input type="text" placeholder="Search" />
+            <button class="search">Search</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn clear">Clear</button>
+        <button class="btn delete">Delete Selected</button>
+        <button class="btn update">Update</button>
+      </div>
+    </div>
+
+    <script>
+      const table = document.querySelector("table");
+      const form = document.querySelector(".form-box form");
+      const inputs = document.querySelectorAll(
+        ".form-box input, .form-box select"
+      );
+
+      const addBtn = document.querySelector(".add");
+      const clearBtn = document.querySelector(".clear");
+      const deleteBtn = document.querySelector(".delete");
+      const searchBtn = document.querySelector(".search");
+      const updateBtn = document.querySelector(".update");
+      const selectAll = document.getElementById("selectAll");
+
+      let editRow = null;
+
+      // ADD
+      addBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        let row = table.insertRow(-1);
+
+        let chk = row.insertCell();
+        chk.innerHTML = "<input type='checkbox' class='rowSelect'>";
+
+        inputs.forEach(function (i) {
+          let cell = row.insertCell();
+          cell.innerText = i.value || "-";
+        });
+
+        let actionCell = row.insertCell();
+        actionCell.innerHTML = "<button class='editBtn'>Edit</button>";
+
+        attachEditEvent();
+        attachCheckboxSync();
+
+        alert("Student Added Successfully!");
+      });
+
+      // CLEAR
+      clearBtn.addEventListener("click", function () {
+        inputs.forEach(function (i) {
+          i.value = "";
+        });
+      });
+
+      // SEARCH
+      searchBtn.addEventListener("click", function () {
+        let text = document
+          .querySelector(".search-box input")
+          .value.toLowerCase();
+        for (let i = 1; i < table.rows.length; i++) {
+          let rowText = table.rows[i].innerText.toLowerCase();
+          table.rows[i].style.display = rowText.includes(text) ? "" : "none";
+        }
+      });
+
+      // EDIT
+      function attachEditEvent() {
+        document.querySelectorAll(".editBtn").forEach(function (btn) {
+          btn.onclick = function () {
+            editRow = this.parentElement.parentElement;
+            let cells = editRow.querySelectorAll("td");
+            inputs.forEach(function (input, i) {
+              input.value = cells[i + 1].innerText;
+            });
+          };
+        });
+      }
+      attachEditEvent();
+
+      // UPDATE
+      updateBtn.addEventListener("click", function () {
+        if (!editRow) return;
+        let cells = editRow.querySelectorAll("td");
+        inputs.forEach(function (input, i) {
+          cells[i + 1].innerText = input.value;
+        });
+        editRow = null;
+        alert("Row Updated Successfully!");
+      });
+
+      // SELECT ALL
+      selectAll.addEventListener("change", function () {
+        document.querySelectorAll(".rowSelect").forEach(function (ch) {
+          ch.checked = selectAll.checked;
+        });
+      });
+
+      // SYNC
+      function attachCheckboxSync() {
+        document.querySelectorAll(".rowSelect").forEach(function (ch) {
+          ch.addEventListener("change", function () {
+            let all = document.querySelectorAll(".rowSelect").length;
+            let checked =
+              document.querySelectorAll(".rowSelect:checked").length;
+            selectAll.checked = all === checked;
+          });
+        });
+      }
+      attachCheckboxSync();
+
+      // MULTIPLE DELETE
+      deleteBtn.addEventListener("click", function () {
+        let rows = document.querySelectorAll(".rowSelect:checked");
+        if (rows.length === 0) {
+          alert("Please select at least one row!");
+          return;
+        }
+        rows.forEach(function (ch) {
+          let row = ch.closest("tr");
+          row.remove();
+        });
+        selectAll.checked = false;
+      });
+    </script>
+  </body>
+</html>

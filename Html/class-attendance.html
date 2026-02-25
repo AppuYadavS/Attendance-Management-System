@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diploma Student Attendance</title>
+    <link
+      rel="stylesheet"
+      href="C:\Users\Appu Yadav\Desktop\Backend\CSS\class-attendance.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Diploma Student</h1>
+      <div class="top-row">
+        <div>
+          <label><b>Subject</b></label
+          ><br />
+          <select id="subject">
+            <option value="">--Select--</option>
+            <option>DBMS</option>
+            <option>JAVA</option>
+            <option>TOC</option>
+            <option>COA</option>
+            <option>CTM</option>
+          </select>
+        </div>
+        <div>
+          <label><b>Teacher Name</b></label
+          ><br />
+          <select id="teacher">
+            <option value="">--Select--</option>
+            <option>Mr. Randhir Sir</option>
+            <option>Ms. Ayushi Raj</option>
+            <option>Mr. Anurag Sir</option>
+            <option>Mr. Kundan Sir</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-wrapper">
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>Registration No</th>
+            <th>Roll No</th>
+            <th>Student Name</th>
+            <th>Father's Name</th>
+            <th>Attendance Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1511824021</td>
+            <td>2024-CSE-21</td>
+            <td>Amarjit Kumar</td>
+            <td>Vijay Yadav</td>
+            <td>
+              <select>
+                <option value="">--Select--</option>
+                <option>Present</option>
+                <option>Absent</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1511824016</td>
+            <td>2024-CSE-16</td>
+            <td>Mohit Kumar</td>
+            <td>Raj Kumar</td>
+            <td>
+              <select>
+                <option value="">--Select--</option>
+                <option>Present</option>
+                <option>Absent</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1511824055</td>
+            <td>2024-CSE-55</td>
+            <td>Nikesh Kumar</td>
+            <td>Jayram Prasad</td>
+            <td>
+              <select>
+                <option value="">--Select--</option>
+                <option>Present</option>
+                <option>Absent</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>1511824015</td>
+            <td>2024-CSE-15</td>
+            <td>MIthun Kumar</td>
+            <td>Uday Paswan</td>
+            <td>
+              <select>
+                <option value="">--Select--</option>
+                <option>Present</option>
+                <option>Absent</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1511824002</td>
+            <td>2024-CSE-02</td>
+            <td>Hemant Singh</td>
+            <td>...........</td>
+            <td>
+              <select>
+                <option value="">--Select--</option>
+                <option>Present</option>
+                <option>Absent</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1511824017</td>
+            <td>2024-CSE-17</td>
+            <td>Ritesh Kumar Sah</td>
+            <td>.........</td>
+            <td>
+              <select>
+                <option value="">--Select--</option>
+                <option>Present</option>
+                <option>Absent</option>
+              </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <!-- Calendar -->
+      <div class="calendar-box">
+        <input type="date" id="datePicker" />
+      </div>
+      <div class="controls">
+        <button class="save" onclick="saveAttendance()">Save</button>
+        <button class="clear" onclick="clearForm()">Clear</button>
+        <button class="exit" onclick="exitPage()">Exit</button>
+      </div>
+    </div>
+    <script>
+      function saveAttendance() {
+        alert("Attendance Saved Successfully!");
+      }
+
+      function clearForm() {
+
+        document.getElementById("attendancestatus").value = "";
+        document.getElementById("subject").value = "";
+        document.getElementById("teacher").value = "";
+        document.getElementById("attendancestatus").value = "";
+        document.getElementById("datePicker").value = "";
+
+        document
+          .querySelectorAll("#studentTable select")
+          .forEach((s) => (s.value = "Present"));
+        document
+          .querySelectorAll("#studentTable input")
+          .forEach((i) => (i.value = ""));
+      }
+
+      function exitPage() {
+        alert("Exit Button Clicked");
+      }
+    </script>
+  </body>
+</html>

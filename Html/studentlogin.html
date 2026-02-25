@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Student Login</title>
+  <link rel="stylesheet" href="C:\Users\Appu Yadav\Desktop\Backend\CSS\login.css">
+</head>
+<body>
+<div class="wrapper">
+   <div class="head">
+    <h1>Student Login</h1>
+    </div>
+    <div class="input">
+        <input id="user" placeholder="Username"><br><br>
+        <input id="pass" type="password" placeholder="Password"><br><br>
+
+        <button onclick="login()">Login</button>
+    </div>
+</div>
+
+<script>
+function login(){
+  var u = document.getElementById("user").value.trim();
+  var p = document.getElementById("pass").value.trim();
+
+  if(u === "admin" && p === "admin"){
+    alert("Login Successful");
+    window.location.href = "report.html";
+  } else {
+    alert("Wrong Username or Password");
+  }
+}
+</script>
+
+</body>
+</html>

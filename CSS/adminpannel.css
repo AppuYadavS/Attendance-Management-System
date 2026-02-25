@@ -1,0 +1,151 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(140deg, #1e1e2f, #4a4a78, #5e0d02);
+     background-size: cover;
+    color: #fff;
+    background-position: center;
+}
+.admin{
+    width: 50%;
+    height: 10%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 30px;
+    color: #fff;
+    padding: 3px 10px 10px 10px;
+    text-align: center;
+}
+
+.button{
+    width: 50%;
+    height: 10%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 30px;
+    color: #fff;
+    padding: 5px 5px 5px 5px;
+    margin-left: 25%;
+    text-align: center;
+}
+.button .butt{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+}
+.button:hover{
+    background: #8383fd;
+    border: 3px solid #070644;
+}
+.butt{
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    border: 2px solid #212141;
+    border-radius: 100px;
+
+}
+.butt:hover{
+    background: #0b0b33;
+    border: 3px solid #175b7a;
+
+}
+.butt a{
+    text-decoration: none;
+    color: #fff;
+}
+
+/* ---------- Responsive Starts ---------- */
+
+/* Large Screens */
+@media(max-width:1200px){
+  .admin{
+     width:60%;
+  }
+  .button{
+     width:60%;
+     margin-left:20%;
+  }
+}
+
+/* Tablet View */
+@media(max-width:992px){
+  .admin{
+     width:70%;
+     font-size:25px;
+  }
+
+  .button{
+     width:70%;
+     margin-left:15%;
+     font-size:22px;
+  }
+
+  .button .butt{
+     height:45px;
+     font-size:16px;
+  }
+}
+
+/* Mobile View */
+@media(max-width:768px){
+
+  body{
+     padding:10px;
+  }
+
+  .admin{
+     width:95%;
+     font-size:22px;
+     padding:10px;
+  }
+
+  .button{
+     width:95%;
+     margin-left:0;
+     padding:10px;
+     font-size:18px;
+  }
+
+  .button .butt{
+     height:45px;
+     font-size:14px;
+  }
+
+  .butt a{
+     display:block;
+     width:100%;
+     line-height:40px;
+  }
+}
+
+/* Small Screens / Very Small Mobiles */
+@media(max-width:480px){
+
+  h1{
+     font-size:22px;
+  }
+
+  .admin{
+     width:90%;
+     font-size:18px;
+  }
+
+  .button{
+     width:90%;
+     font-size:14px;
+  }
+
+  .button .butt{
+     height:42px;
+     font-size:12px;
+  }
+}

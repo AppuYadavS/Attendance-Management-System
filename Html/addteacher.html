@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Teacher</title>
+    <link
+      rel="stylesheet"
+      href="C:\Users\Appu Yadav\Desktop\Backend\CSS\addteacher.css"
+    />
+  </head> 
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="nav border">Attendance Management Portal</div>
+      </div>
+      <div class="pannel">
+        <div class="pannel-ops">
+          <a class="border" href="index.html">Home</a>
+          <a class="border" href="teacherlogin.html" target="_blank"
+            >Teacher Pannel</a
+          >
+          <a class="border" href="loginstd.html" target="_blank"
+            >Student Pannel</a
+          >
+          <a class="border" href="adminpannel.html" target="_blank"
+            >Admin Pannel</a
+          >
+          <a class="border" href="">Contact Us</a>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <h1>Add Teacher</h1>
+      <div class="layout">
+        <!-- Form -->
+        <div class="form-box">
+          <form action="">
+          <label>Teacher ID</label>
+          <input type="text" id="tid"  required/>
+
+          <label>Teacher Name</label>
+          <input type="text" id="tname"  required/>
+
+          <label>Mobile Number</label>
+          <input type="tel" id="mobile"  required/>
+
+          <label>Email</label>
+          <input type="email" id="email"  required/>
+
+          <label>Password</label>
+          <input type="password" id="password" required />
+          <div class="form-buttons">
+            <button type="button" class="btn-add" onclick="addTeacher()">Add</button>
+            <button type="button" class="btn-clear" onclick="clearForm()">Clear</button>
+          </div>
+          </form>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+          <table id="teacherTable">
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    type="checkbox"
+                    id="selectAll"
+                    onclick="toggleAll(this)"
+                  />
+                </th>
+                <th>S.N.</th>
+                <th>TeacherID</th>
+                <th>TeacherName</th>
+                <th>MobileNo</th>
+                <th>Email</th>
+                <th>Password</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr onclick="selectRow(this)">
+                <td><input type="checkbox" class="row-check" /></td>
+                <td>1</td>
+                <td>15118</td>
+                <td>Randhir Sir</td>
+                <td>85479565</td>
+                <td>kumarrandhir12@gmail.com</td>
+                <td>151542</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bottom Controls -->
+      <div class="bottom-controls">
+        <div class="search-box">
+          <input
+            type="text"
+            id="search"
+            placeholder="Search.."
+            onkeyup="searchTeacher()"
+          />
+        </div>
+        <button class="btn-edit" onclick="editTeacher()">Edit</button>
+        <button class="btn-delete" onclick="deleteTeacher()">Delete</button>
+        <button class="btn-exit" onclick="exitPage()">Exit</button>
+      </div>
+    </div>
+    <script>
+let selectedRow = null;
+
+function addTeacher() {
+  const tid = document.getElementById("tid").value.trim();
+  const tname = document.getElementById("tname").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value.trim();
+
+  if (!tid || !tname || !mobile || !email) {
+    alert("Teacher ID, Name, Mobile and Email Required hai");
+    return;
+  }
+
+  // Mobile Number Validation (10 digits)
+  const mobilePattern = /^[0-9]{10}$/;
+  if (!mobilePattern.test(mobile)) {
+    alert("Valid 10 Digit Mobile Number Enter Kare");
+    return;
+  }
+
+  // Email Validation
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!emailPattern.test(email)) {
+    alert("Valid Email ID Enter Kare");
+    return;
+  }
+
+  const tbody = document.querySelector("#teacherTable tbody");
+  const row = tbody.insertRow();
+
+  row.onclick = () => selectRow(row);
+
+  row.innerHTML = `
+    <td><input type="checkbox" class="row-check"></td>
+    <td>${tbody.rows.length}</td>
+    <td>${tid}</td>
+    <td>${tname}</td>
+    <td>${mobile}</td>
+    <td>${email}</td>
+    <td>${password}</td>
+  `;
+
+  clearForm();
+}
+
+function clearForm() {
+  document.querySelectorAll(".form-box input").forEach(i => i.value = "");
+  selectedRow = null;
+}
+
+function selectRow(row) {
+  selectedRow = row;
+  const c = row.cells;
+  document.getElementById("tid").value = c[2].innerText;
+  document.getElementById("tname").value = c[3].innerText;
+  document.getElementById("mobile").value = c[4].innerText;
+  document.getElementById("email").value = c[5].innerText;
+  document.getElementById("password").value = c[6].innerText;
+}
+
+function editTeacher() {
+  if (!selectedRow) {
+    alert("Select a row to edit");
+    return;
+  }
+
+  selectedRow.cells[2].innerText = document.getElementById("tid").value;
+  selectedRow.cells[3].innerText = document.getElementById("tname").value;
+  selectedRow.cells[4].innerText = document.getElementById("mobile").value;
+  selectedRow.cells[5].innerText = document.getElementById("email").value;
+  selectedRow.cells[6].innerText = document.getElementById("password").value;
+
+  clearForm();
+}
+
+// ------------ MULTIPLE DELETE --------------
+function deleteTeacher() {
+  const checked = document.querySelectorAll(".row-check:checked");
+
+  if (checked.length === 0) {
+    alert("Select at least one row to delete");
+    return;
+  }
+
+  checked.forEach(ch => ch.closest("tr").remove());
+  renumber();
+  clearForm();
+}
+
+// Renumber S.N after delete
+function renumber() {
+  document
+    .querySelectorAll("#teacherTable tbody tr")
+    .forEach((row, i) => row.cells[1].innerText = i + 1);
+}
+
+// Select All
+function toggleAll(box) {
+  document.querySelectorAll(".row-check").forEach(c => c.checked = box.checked);
+}
+
+// ----------- SEARCH --------------
+function searchTeacher() {
+  const value = document.getElementById("search").value.toLowerCase();
+  const rows = document.querySelectorAll("#teacherTable tbody tr");
+
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(value) ? "" : "none";
+  });
+}
+
+function exitPage() {
+  alert("Exit clicked");
+}
+</script>
+
+    </script>
+  </body>
+</html>

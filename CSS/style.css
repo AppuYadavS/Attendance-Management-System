@@ -1,0 +1,158 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  height: 60px;
+  background-color: #0f1111;
+  color: #cccccc;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.nav{
+  font-size:1.8rem;
+  text-align:center;
+}
+
+/* ===== PANEL MENU ===== */
+.pannel{
+  width:100%;
+  background-color: #222f3d;
+  padding:8px 0;
+}
+
+.pannel-ops{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.pannel-ops a{
+  color:white;
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:8px;
+  transition:.3s;
+}
+
+.pannel-ops a:hover{
+  border: 2px solid white;
+  background: linear-gradient(140deg, #182c1d, #0e0ed1dc, #144244, #273a42);
+}
+
+/* ===== BACKGROUND ===== */
+body{
+  background: linear-gradient(135deg,#3495f5,#005DFF,#1cc5ce);
+}
+
+/* ===== HERO SECTION ===== */
+.hero{
+  width:100%;
+  min-height: calc(100vh - 100px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* ===== CARD ===== */
+.card{
+  width:100%;
+  max-width:1000px;
+  background:#ffffff;
+  border-radius:28px;
+  padding: 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  box-shadow: 0 20px 40px rgba(26,25,25,0.2);
+  animation: pop 0.6s ease-in-out;
+}
+
+@keyframes pop{
+  from{transform:scale(.9);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+/* ===== LEFT TEXT ===== */
+.left h1{
+  color:#0063ff;
+  font-size:45px;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+
+.left p{
+  color:#555;
+  font-size:16px;
+  max-width:350px;
+}
+
+/* ===== IMAGE ===== */
+.right img{
+  width:320px;
+  max-width:100%;
+  border-radius:20px;
+}
+
+/* ========= TABLET RESPONSIVE ========= */
+@media(max-width:900px){
+  .left h1{
+    font-size:35px;
+  }
+
+  .left p{
+    font-size:15px;
+  }
+
+  .right img{
+    width:240px;
+  }
+}
+
+/* ========= MOBILE RESPONSIVE ========= */
+@media(max-width:700px){
+
+  .card{
+    flex-direction:column;
+    text-align:center;
+    padding:30px;
+  }
+
+  .left p{
+    max-width:100%;
+  }
+
+  .navbar{
+    height:auto;
+    padding:12px 5px;
+  }
+
+  .nav{
+    font-size:1.3rem;
+  }
+
+  .pannel-ops{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .pannel-ops a{
+    width:90%;
+    text-align:center;
+  }
+
+  .right img{
+    width:230px;
+    margin-top:10px;
+  }
+}

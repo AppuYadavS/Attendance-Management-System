@@ -1,0 +1,258 @@
+/*{
+    margin: 0;
+    padding: 0%;
+    font-family: "poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(140deg, #1e1e2f, #4a4a78, #5e0d02);
+    background-size: cover;
+    background-position: center;
+}
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 50px;
+    padding: 120px 40px 40px;
+}
+.wrapper:hover{
+    border: 5px solid rgba(255, 255, 255, .5);
+     background: linear-gradient(110deg, #121213, #141414, #052722, #024758);
+
+}
+.head{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e1e1eb;
+    width: 240px;
+    height: 70px;
+    border-radius: 0 0 20px 20px;
+}
+.head h1{
+    font-size: 30px;
+    color: #272730;
+}
+.head h1::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-right-radius: 50%;
+    background: transparent;
+    box-shadow: 15px 0 0 0 whitesmoke;
+}
+.head h1::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-right-radius: 50%;
+    background: transparent;
+    box-shadow: 15px 0 0 0 whitesmoke;
+}
+.wrapper #user, #pass{
+    margin-top: 5px;
+}
+
+input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    font-size: 16px;
+    color: #fff;
+    padding: 5px 5px 10px 10px;
+}
+input::placeholder{
+    color: #fff;
+}
+
+.wrapper button{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+button:hover{
+    border: 3px solid rgba(255, 255, 255, .5);
+     background: linear-gradient(111deg, #e0f339, #0bd815, #3409d1);
+
+} */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "poppins", sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(140deg, #1e1e2f, #4a4a78, #5e0d02);
+    background-size: cover;
+    background-position: center;
+}
+
+/* ---------------- Wrapper ---------------- */
+.wrapper{
+    width: 420px;
+    max-width: 95%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 50px;
+    padding: 120px 40px 40px;
+    position: relative;
+}
+
+.wrapper:hover{
+    border: 5px solid rgba(255, 255, 255, .5);
+    background: linear-gradient(110deg, #121213, #141414, #052722, #024758);
+}
+
+/* ---------------- Header ---------------- */
+.head{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e1e1eb;
+    width: 240px;
+    height: 70px;
+    border-radius: 0 0 20px 20px;
+}
+.head h1{
+    font-size: 30px;
+    color: #272730;
+}
+
+/* ---------------- Inputs ---------------- */
+.wrapper input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    font-size: 16px;
+    color: #fff;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+input::placeholder{
+    color: #fff;
+}
+
+/* ---------------- Button ---------------- */
+.wrapper button{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+button:hover{
+    border: 3px solid rgba(255, 255, 255, .5);
+    background: linear-gradient(111deg, #e0f339, #0bd815, #3409d1);
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+/* Tablet */
+@media (max-width: 992px){
+    .wrapper{
+        width: 380px;
+        padding: 110px 35px 35px;
+    }
+    .head{
+        width: 220px;
+        height: 65px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    .wrapper{
+        width: 330px;
+        padding: 105px 30px 30px;
+        border-radius: 40px;
+    }
+
+    .head{
+        width: 200px;
+        height: 60px;
+    }
+
+    .head h1{
+        font-size: 22px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px){
+    .wrapper{
+        width: 300px;
+        padding: 95px 25px 25px;
+        border-radius: 35px;
+    }
+
+    .head{
+        width: 180px;
+        height: 55px;
+    }
+
+    .head h1{
+        font-size: 20px;
+    }
+
+    input{
+        height: 45px;
+        font-size: 14px;
+    }
+
+    button{
+        height: 40px;
+        font-size: 14px;
+    }
+}

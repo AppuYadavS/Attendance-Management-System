@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Attendance Report</title>
+
+<link rel="stylesheet" href="C:\Users\Appu Yadav\Desktop\Backend\CSS\report.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>STUDENT ATTENDANCE REPORT</h1>
+
+<!-- Filters -->
+<div class="filters">
+
+<div class="filter-box">
+<label>Subject</label>
+<select id="subject">
+<option value="">Select</option>
+<option>DBMS</option>
+<option>JAVA</option>
+<option>TOC</option>
+<option>COA</option>
+<option>CTM</option>
+</select>
+</div>
+
+<div class="filter-box">
+<label>Teacher</label>
+<select id="teacher">
+<option value="">Select</option>
+<option>Mr. Randhir Sir</option>
+<option>Ms. Ayushi Raj</option>
+<option>Mr. Anurag Sir</option>
+<option>Mr. Kundan Sir</option>
+</select>
+</div>
+
+<div class="filter-box">
+<label>From</label>
+<input type="date" id="fromDate">
+</div>
+
+<div class="filter-box">
+<label>To</label>
+<input type="date" id="toDate">
+</div>
+
+<div class="filter-box">
+<button class="load-btn" onclick="loadReport()">Load Report</button>
+</div>
+</div>
+
+<!-- Report Table -->
+<div class="table-container">
+<table id="reportTable">
+<thead>
+<tr>
+<th>Roll No</th>
+<th>Student Name</th>
+<th>Total Classes</th>
+<th>Present</th>
+<th>Absent</th>
+<th>Attendance %</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+<p class="summary" id="summaryText"></p>
+
+<button class="export" onclick="exportExcel()">Download Excel</button>
+
+</div>
+
+<script>
+// SAMPLE DATA (Database ke jagah)
+const students = [
+{roll:"2024-CSE-21", name:"Amarjit Kumar", total:20, present:18},
+{roll:"2024-CSE-16", name:"Mohit Kumar", total:20, present:10},
+{roll:"2024-CSE-55", name:"Nikesh Kumar", total:20, present:7},
+{roll:"2024-CSE-15", name:"Mithun Kumar", total:20, present:20},
+{roll:"2024-CSE-02", name:"Hemant Singh", total:20, present:11},
+{roll:"2024-CSE-17", name:"Ritesh Kumar", total:20, present:5}
+];
+
+function loadReport(){
+
+let subject=document.getElementById("subject").value;
+let teacher=document.getElementById("teacher").value;
+let from=document.getElementById("fromDate").value;
+let to=document.getElementById("toDate").value;
+
+if(subject=="" || teacher=="" || from=="" || to==""){
+alert("Please select all filters");
+return;
+}
+if(from > to){
+alert("Starting date cannot be greater than Ending date");
+return;
+}
+
+let tbody=document.querySelector("#reportTable tbody");
+tbody.innerHTML="";
+
+let totalPresent=0,totalClasses=0;
+
+students.forEach(s=>{
+let absent = s.total - s.present;
+let percent = ((s.present/s.total)*100).toFixed(2);
+
+tbody.innerHTML += `
+<tr>
+<td>${s.roll}</td>
+<td>${s.name}</td>
+<td>${s.total}</td>
+<td>${s.present}</td>
+<td>${absent}</td>
+<td>${percent}%</td>
+</tr>
+`;
+
+totalPresent+=s.present;
+totalClasses+=s.total;
+});
+
+// Summary
+let overall = ((totalPresent/totalClasses)*100).toFixed(2);
+document.getElementById("summaryText").innerText =
+"Overall Attendance Percentage : " + overall + "%";
+}
+
+// EXCEL DOWNLOAD
+function exportExcel(){
+var table=document.getElementById("reportTable");
+var html=table.outerHTML;
+
+var blob=new Blob(['\ufeff',html],{
+type:'application/vnd.ms-excel'
+});
+
+var url=URL.createObjectURL(blob);
+var a=document.createElement("a");
+a.href=url;
+a.download="Attendance_Report.xls";
+a.click();
+}
+</script>
+
+</body>
+</html>
